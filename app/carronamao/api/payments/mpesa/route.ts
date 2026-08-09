@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
 
   if (!body.phone || !body.amount || !body.reference) {
     return jsonWithCors(
-      { error: 'phone, amount, user_id e reference são obrigatórios' },
+      { error: 'phone, amount, e reference são obrigatórios' },
       { status: 400, origin }
     );
   }
