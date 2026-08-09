@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     return jsonWithCors({ error: 'JSON inválido' }, { status: 400, origin });
   }
 
-  if (!body.phone || !body.amount || !body.user_id || !body.reference) {
+  if (!body.phone || !body.amount || !body.reference) {
     return jsonWithCors(
       { error: 'phone, amount, user_id e reference são obrigatórios' },
       { status: 400, origin }
