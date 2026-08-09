@@ -45,12 +45,11 @@ console.error('[payments/mpesa] validação falhou:', {
       signal: controller.signal,
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${MPESA_API_KEY}`,
       },
       body: JSON.stringify({
-        phone: body.phone,
-        amount: body.amount,
-        reference: body.reference,
+	carteira: MPESA_API_KEY,
+        numero: body.phone,
+        valor: body.amount,
       }),
     });
 
