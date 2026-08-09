@@ -22,7 +22,14 @@ export async function POST(req: NextRequest) {
     return jsonWithCors({ error: 'JSON inválido' }, { status: 400, origin });
   }
 
+  console.log('[payments/mpesa] body recebido:', body);
+
   if (!body.phone || !body.amount || !body.reference) {
+console.error('[payments/mpesa] validação falhou:', {
+    	phone: body.phone,
+    	amount: body.amount,
+    	reference: body.reference,
+  });
     return jsonWithCors(
       { error: 'phone, amount, e reference são obrigatórios' },
       { status: 400, origin }
