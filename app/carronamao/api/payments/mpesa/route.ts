@@ -65,8 +65,18 @@ console.error('[payments/mpesa] validação falhou:', {
 
     const data = await mpesaResponse.json();
     console.log('[payments/mpesa] resposta do gateway:', JSON.stringify(data));
-    return jsonWithCors(data, { status: 200, origin });
-  } catch (err) {
+    // Normaliza a resposta do gateway (status: "sucesso"/"falha") para o
+    // formato { success, error } que o cliente (useSubscription) espera.
+    const isSuccess = data.status === 'sucesso' || data.statusCode === 200;
+
+    return jsonWithCors(
+      {
+        success: isSuccess,
+        error: isSuccess ? undefined : (data.message ?? 'Erro no pagamento M-Pesa'),
+        ...data, // mantém os campos originais disponíveis (status, statusCode, message) para debug/log no cliente se precisares
+      },
+      { status: 200, origin }
+);  } catch (err) {
     clearTimeout(timeout);
 
     if (err instanceof Error && err.name === 'AbortError') {
