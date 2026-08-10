@@ -3,7 +3,7 @@ import { corsPreflight, jsonWithCors } from '@/lib/cors';
 
 const MPESA_API_URL = process.env.MPESA_API_URL as string;
 const MPESA_API_KEY = process.env.MPESA_API_KEY as string;
-const MPESA_TIMEOUT_MS = 15_000;
+const MPESA_TIMEOUT_MS = 30_000;
 
 // POST /carronamao/api/payments/mpesa
 // body: { phone: string, amount: number, user_id: string, reference: string }
@@ -13,7 +13,6 @@ export async function POST(req: NextRequest) {
   let body: {
     phone?: string;
     amount?: number;
-    user_id?: string;
     reference?: string;
   };
   try {
