@@ -64,6 +64,7 @@ console.error('[payments/mpesa] validação falhou:', {
     }
 
     const data = await mpesaResponse.json();
+    console.log('[payments/mpesa] resposta do gateway:', JSON.stringify(data));
     return jsonWithCors(data, { status: 200, origin });
   } catch (err) {
     clearTimeout(timeout);
