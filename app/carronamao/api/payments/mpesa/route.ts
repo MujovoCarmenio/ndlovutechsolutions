@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server';
 import { corsPreflight, jsonWithCors } from '@/lib/cors';
+import { Resend } from "resend";
 
 const MPESA_API_URL = process.env.MPESA_API_URL as string;
 const MPESA_API_KEY = process.env.MPESA_API_KEY as string;
