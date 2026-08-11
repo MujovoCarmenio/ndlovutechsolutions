@@ -15,6 +15,7 @@ export async function POST(req: NextRequest) {
     phone?: string;
     amount?: number;
     reference?: string;
+	email?:string;
   };
   try {
     body = await req.json();
