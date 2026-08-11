@@ -17,6 +17,7 @@ export async function POST(req: NextRequest) {
     amount?: number;
     reference?: string;
 	email?: string;
+	name?: string;
   };
   try {
     body = await req.json();
@@ -78,13 +79,13 @@ console.error('[payments/mpesa] validação falhou:', {
             await resend.emails.send({
                 from:
                     "CarroNaMão <noreply@ndlovutechsolutions.com>",
-                to: email,
+                to: body.email,
                 subject: "✅ Pagamento confirmado — CarroNaMão",
                 html: emailTemplate({
-                    nome: nome ?? "Cliente",
-                    valor,
-                    reference,
-                    numero,
+                    nome: body.name ?? "Cliente",
+                    valor: body.amount,
+                    reference: body.reference,
+                    numero: body.phone,
                 }),
             });
         }
