@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     phone?: string;
     amount?: number;
     reference?: string;
-	email?:string;
+	email?: string;
   };
   try {
     body = await req.json();
@@ -71,7 +71,7 @@ console.error('[payments/mpesa] validação falhou:', {
     // formato { success, error } que o cliente (useSubscription) espera.
     const isSuccess = data.status === 'sucesso' || data.statusCode === 200;
 
-	if (isSuccess && email && RESEND_API_KEY) {
+	if (isSuccess && body.email && RESEND_API_KEY) {
             const resend = new Resend(RESEND_API_KEY);
 
             await resend.emails.send({
