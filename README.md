@@ -1,6 +1,6 @@
 # Ndlovu API
 
-Projeto Next.js (App Router) para gerir as APIs de todos os apps da **Ndlovu Digital**
+Projeto Next.js (App Router) para gerir as APIs de todos os apps da **Ndlovu Tech Solutions**
 num único domínio: `ndlovutechsolutions.com`.
 
 ## Estrutura
